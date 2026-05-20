@@ -1,11 +1,11 @@
-USE `voldigital`;
+USE voldigital;
 
 START TRANSACTION;
 
 /* ----------------------------- */
 /* 1) Voluntarios (10)          */
 /* ----------------------------- */
-INSERT INTO `users` (email, password, role) VALUES
+INSERT INTO users (email, password, role) VALUES
 ('v1@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','volunteer'),
 ('v2@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','volunteer'),
 ('v3@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','volunteer'),
@@ -17,18 +17,18 @@ INSERT INTO `users` (email, password, role) VALUES
 ('v9@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','volunteer'),
 ('v10@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','volunteer');
 
-SET @u1 = (SELECT id FROM users WHERE email='v1@example.com');
-SET @u2 = (SELECT id FROM users WHERE email='v2@example.com');
-SET @u3 = (SELECT id FROM users WHERE email='v3@example.com');
-SET @u4 = (SELECT id FROM users WHERE email='v4@example.com');
-SET @u5 = (SELECT id FROM users WHERE email='v5@example.com');
-SET @u6 = (SELECT id FROM users WHERE email='v6@example.com');
-SET @u7 = (SELECT id FROM users WHERE email='v7@example.com');
-SET @u8 = (SELECT id FROM users WHERE email='v8@example.com');
-SET @u9 = (SELECT id FROM users WHERE email='v9@example.com');
-SET @u10 = (SELECT id FROM users WHERE email='v10@example.com');
+SELECT id INTO @u1 FROM users WHERE email='v1@example.com';
+SELECT id INTO @u2 FROM users WHERE email='v2@example.com';
+SELECT id INTO @u3 FROM users WHERE email='v3@example.com';
+SELECT id INTO @u4 FROM users WHERE email='v4@example.com';
+SELECT id INTO @u5 FROM users WHERE email='v5@example.com';
+SELECT id INTO @u6 FROM users WHERE email='v6@example.com';
+SELECT id INTO @u7 FROM users WHERE email='v7@example.com';
+SELECT id INTO @u8 FROM users WHERE email='v8@example.com';
+SELECT id INTO @u9 FROM users WHERE email='v9@example.com';
+SELECT id INTO @u10 FROM users WHERE email='v10@example.com';
 
-INSERT INTO `volunteers` (user_id, name, last_name, bio, phone, city, birth_date)
+INSERT INTO volunteers (user_id, name, last_name, bio, phone, city, birth_date)
 VALUES
 (@u1, 'Natalia', 'Gómez', 'Apasionada por la conservación ambiental.', '+573001111111','Bucaramanga','1992-04-12'),
 (@u2, 'Carlos', 'Ramírez', 'Docente voluntario en educación popular.', '+573002222222','Bucaramanga','1988-09-03'),
@@ -42,36 +42,36 @@ VALUES
 (@u10,'Diego', 'Suárez', 'Emprendedor social en formación.', '+573010000000','Bucaramanga','1994-02-14');
 
 -- Variables con los IDs reales de la tabla `volunteers` (FK requiere volunteers.id)
-SET @vol1 = (SELECT id FROM volunteers WHERE user_id=@u1 LIMIT 1);
-SET @vol2 = (SELECT id FROM volunteers WHERE user_id=@u2 LIMIT 1);
-SET @vol3 = (SELECT id FROM volunteers WHERE user_id=@u3 LIMIT 1);
-SET @vol4 = (SELECT id FROM volunteers WHERE user_id=@u4 LIMIT 1);
-SET @vol5 = (SELECT id FROM volunteers WHERE user_id=@u5 LIMIT 1);
-SET @vol6 = (SELECT id FROM volunteers WHERE user_id=@u6 LIMIT 1);
-SET @vol7 = (SELECT id FROM volunteers WHERE user_id=@u7 LIMIT 1);
-SET @vol8 = (SELECT id FROM volunteers WHERE user_id=@u8 LIMIT 1);
-SET @vol9 = (SELECT id FROM volunteers WHERE user_id=@u9 LIMIT 1);
-SET @vol10 = (SELECT id FROM volunteers WHERE user_id=@u10 LIMIT 1);
+SELECT id INTO @vol1 FROM volunteers WHERE user_id=@u1 LIMIT 1;
+SELECT id INTO @vol2 FROM volunteers WHERE user_id=@u2 LIMIT 1;
+SELECT id INTO @vol3 FROM volunteers WHERE user_id=@u3 LIMIT 1;
+SELECT id INTO @vol4 FROM volunteers WHERE user_id=@u4 LIMIT 1;
+SELECT id INTO @vol5 FROM volunteers WHERE user_id=@u5 LIMIT 1;
+SELECT id INTO @vol6 FROM volunteers WHERE user_id=@u6 LIMIT 1;
+SELECT id INTO @vol7 FROM volunteers WHERE user_id=@u7 LIMIT 1;
+SELECT id INTO @vol8 FROM volunteers WHERE user_id=@u8 LIMIT 1;
+SELECT id INTO @vol9 FROM volunteers WHERE user_id=@u9 LIMIT 1;
+SELECT id INTO @vol10 FROM volunteers WHERE user_id=@u10 LIMIT 1;
 
 /* ----------------------------- */
 /* 2) Organizaciones (5)         */
 /* Temáticas: medio ambiente, abuelitos, eventos sociales, refugio de animales, cultura */
 /* Planes: 1=Gratis,2=Starter,3=Professional,4=Enterprise */
 /* ----------------------------- */
-INSERT INTO `users` (email, password, role) VALUES
+INSERT INTO users (email, password, role) VALUES
 ('org1@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','organization'),
 ('org2@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','organization'),
 ('org3@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','organization'),
 ('org4@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','organization'),
 ('org5@example.com','$2a$12$3ghbMLgOVa0X1uSwrhz7ZOr.7J7.6FXCEp40IHPLJOYDKhhjYnI7C','organization');
 
-SET @ou1 = (SELECT id FROM users WHERE email='org1@example.com');
-SET @ou2 = (SELECT id FROM users WHERE email='org2@example.com');
-SET @ou3 = (SELECT id FROM users WHERE email='org3@example.com');
-SET @ou4 = (SELECT id FROM users WHERE email='org4@example.com');
-SET @ou5 = (SELECT id FROM users WHERE email='org5@example.com');
+SELECT id INTO @ou1 FROM users WHERE email='org1@example.com';
+SELECT id INTO @ou2 FROM users WHERE email='org2@example.com';
+SELECT id INTO @ou3 FROM users WHERE email='org3@example.com';
+SELECT id INTO @ou4 FROM users WHERE email='org4@example.com';
+SELECT id INTO @ou5 FROM users WHERE email='org5@example.com';
 
-INSERT INTO `organizations` (user_id, name, description, phone, address, city, website, plan_id, projects_this_month, month_reset_date)
+INSERT INTO organizations (user_id, name, description, phone, address, city, website, plan_id, projects_this_month, month_reset_date)
 VALUES
 (@ou1, 'Guardianes del Río', 'Actividades de conservación y reforestación (medio ambiente).', '+573011111111','Calle 100 #10-10','Bucaramanga','https://guardianesrio.org', 1, 1, CURDATE()),
 (@ou2, 'Abuelos en Casa', 'Programas de acompañamiento y cuidado para adultos mayores.', '+573012222222','Carrera 15 #20-30','Bucaramanga','https://abuelosencasa.org', 2, 4, CURDATE()),
@@ -79,36 +79,36 @@ VALUES
 (@ou4, 'Refugio Peludo', 'Refugio y adopción para animales en situación de calle.', '+573014444444','Diagonal 5 #11-50','Bucaramanga','https://refugiopeludo.org', 4, 8, CURDATE()),
 (@ou5, 'Cultura Viva', 'Proyectos culturales, talleres y festivales.', '+573015555555','Calle 22 #44-10','Bucaramanga','https://culturaviva.org', 3, 5, CURDATE());
 
-SET @org1 = (SELECT id FROM organizations WHERE user_id=@ou1 LIMIT 1);
-SET @org2 = (SELECT id FROM organizations WHERE user_id=@ou2 LIMIT 1);
-SET @org3 = (SELECT id FROM organizations WHERE user_id=@ou3 LIMIT 1);
-SET @org4 = (SELECT id FROM organizations WHERE user_id=@ou4 LIMIT 1);
-SET @org5 = (SELECT id FROM organizations WHERE user_id=@ou5 LIMIT 1);
+SELECT id INTO @org1 FROM organizations WHERE user_id=@ou1 LIMIT 1;
+SELECT id INTO @org2 FROM organizations WHERE user_id=@ou2 LIMIT 1;
+SELECT id INTO @org3 FROM organizations WHERE user_id=@ou3 LIMIT 1;
+SELECT id INTO @org4 FROM organizations WHERE user_id=@ou4 LIMIT 1;
+SELECT id INTO @org5 FROM organizations WHERE user_id=@ou5 LIMIT 1;
 
 /* ----------------------------- */
 /* 3) Proyectos por organización */
 /* Respectando el máximo indicado en plans.max_projects_monthly (creamos <= max) */
 /* Org1 (plan 1) -> 1 proyecto */
-INSERT INTO `projects` (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
+INSERT INTO projects (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
 VALUES
 (@org1, 'Limpieza Río Verde', 'Jornada de limpieza y reforestación en la cuenca del Río Verde.', '', 'Parque Río Verde', 20, 'recruiting', '2026-06-05', NULL);
 SET @p_o1_1 = LAST_INSERT_ID();
 
 /* Org2 (plan 2) -> 4 proyectos */
-INSERT INTO `projects` (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
+INSERT INTO projects (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
 VALUES
 (@org2, 'Aula Intergeneracional 2026', 'Actividades educativas y recreativas enfocadas en adultos mayores y la comunidad (intergeneracional).', '', 'Centro Comunitario', 30, 'completed', '2026-01-10', '2026-03-15'),
 (@org2, 'Biblioteca Comunitaria', 'Recolección y catalogación de libros.', '', 'Centro Comunitario', 10, 'recruiting', '2026-05-20', NULL),
 (@org2, 'Taller de Habilidades Digitales', 'Formación básica en uso de dispositivos y comunicación digital para adultos mayores.', '', 'Centro Comunitario', 12, 'recruiting', '2026-07-01', NULL),
 (@org2, 'Campaña Nutricional', 'Charlas y talleres de nutrición.', '', 'Colegio San José', 15, 'completed', '2025-11-01', '2026-02-01');
 
-SET @p_o2_1 = (SELECT id FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 0);
-SET @p_o2_2 = (SELECT id FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 1);
-SET @p_o2_3 = (SELECT id FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 2);
-SET @p_o2_4 = (SELECT id FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 3);
+SELECT id INTO @p_o2_1 FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 0;
+SELECT id INTO @p_o2_2 FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 1;
+SELECT id INTO @p_o2_3 FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 2;
+SELECT id INTO @p_o2_4 FROM projects WHERE organization_id=@org2 ORDER BY id LIMIT 1 OFFSET 3;
 
 /* Org3 (plan 3) -> 6 proyectos */
-INSERT INTO `projects` (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
+INSERT INTO projects (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
 VALUES
 (@org3, 'Festival de Arte', 'Eventos y talleres para jóvenes artistas.', '', 'Plaza Principal', 25, 'completed', '2025-09-05', '2025-12-10'),
 (@org3, 'Muestra Cultural', 'Exposición y actividades culturales.', '', 'Casa de la Cultura', 20, 'recruiting', '2026-08-01', NULL),
@@ -117,15 +117,15 @@ VALUES
 (@org3, 'Murales por la Paz', 'Intervenciones artísticas en espacios públicos.', '', 'Barrios', 10, 'completed', '2026-02-01', '2026-04-01'),
 (@org3, 'Círculo de Lectura', 'Club de lectura y discusión.', '', 'Biblioteca Arte Viva', 12, 'recruiting', '2026-05-25', NULL);
 
-SET @p_o3_1 = (SELECT id FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 0);
-SET @p_o3_2 = (SELECT id FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 1);
-SET @p_o3_3 = (SELECT id FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 2);
-SET @p_o3_4 = (SELECT id FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 3);
-SET @p_o3_5 = (SELECT id FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 4);
-SET @p_o3_6 = (SELECT id FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 5);
+SELECT id INTO @p_o3_1 FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 0;
+SELECT id INTO @p_o3_2 FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 1;
+SELECT id INTO @p_o3_3 FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 2;
+SELECT id INTO @p_o3_4 FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 3;
+SELECT id INTO @p_o3_5 FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 4;
+SELECT id INTO @p_o3_6 FROM projects WHERE organization_id=@org3 ORDER BY id LIMIT 1 OFFSET 5;
 
 /* Org4 (plan 4) -> 8 proyectos */
-INSERT INTO `projects` (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
+INSERT INTO projects (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
 VALUES
 (@org4, 'Programa Emprende', 'Acompañamiento a emprendimientos sociales.', '', 'Centro Empresarial', 40, 'completed', '2025-06-01', '2025-10-01'),
 (@org4, 'Laboratorio de Innovación', 'Prototipado con comunidades.', '', 'Lab Impulso', 20, 'recruiting', '2026-06-20', NULL),
@@ -136,27 +136,27 @@ VALUES
 (@org4, 'Voluntariado Corporativo', 'Proyectos cortos con empleados.', '', 'Sedes', 60, 'recruiting', '2026-05-10', NULL),
 (@org4, 'Evaluación de Impacto', 'Medición de proyectos sociales.', '', 'Oficinas Centrales', 8, 'recruiting', '2026-06-01', NULL);
 
-SET @p_o4_1 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 0);
-SET @p_o4_2 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 1);
-SET @p_o4_3 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 2);
-SET @p_o4_4 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 3);
-SET @p_o4_5 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 4);
-SET @p_o4_6 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 5);
-SET @p_o4_7 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 6);
-SET @p_o4_8 = (SELECT id FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 7);
+SELECT id INTO @p_o4_1 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 0;
+SELECT id INTO @p_o4_2 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 1;
+SELECT id INTO @p_o4_3 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 2;
+SELECT id INTO @p_o4_4 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 3;
+SELECT id INTO @p_o4_5 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 4;
+SELECT id INTO @p_o4_6 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 5;
+SELECT id INTO @p_o4_7 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 6;
+SELECT id INTO @p_o4_8 FROM projects WHERE organization_id=@org4 ORDER BY id LIMIT 1 OFFSET 7;
 
 /* Org5 (Cultura Viva) -> 4 proyectos */
-INSERT INTO `projects` (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
+INSERT INTO projects (organization_id, title, description, image_url, location, max_volunteers, status, start_date, end_date)
 VALUES
 (@org5, 'Talleres Comunitarios', 'Series de talleres abiertos de música, danza y creación.', '', 'Centro Cultural', 20, 'completed', '2026-01-10', '2026-03-01'),
 (@org5, 'Festival Callejero', 'Actividades artísticas al aire libre para toda la comunidad.', '', 'Plaza Central', 30, 'recruiting', '2026-09-10', NULL),
 (@org5, 'Residencia de Artistas', 'Alojamiento y apoyo a artistas emergentes.', '', 'Casa de la Cultura', 8, 'recruiting', '2026-07-15', NULL),
 (@org5, 'Ciclo de Conciertos', 'Conciertos comunitarios con artistas locales.', '', 'Parque Cultural', 40, 'recruiting', '2026-08-20', NULL);
 
-SET @p_o5_1 = (SELECT id FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 0);
-SET @p_o5_2 = (SELECT id FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 1);
-SET @p_o5_3 = (SELECT id FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 2);
-SET @p_o5_4 = (SELECT id FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 3);
+SELECT id INTO @p_o5_1 FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 0;
+SELECT id INTO @p_o5_2 FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 1;
+SELECT id INTO @p_o5_3 FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 2;
+SELECT id INTO @p_o5_4 FROM projects WHERE organization_id=@org5 ORDER BY id LIMIT 1 OFFSET 3;
 
 /* ----------------------------- */
 /* 3.5) Avatares, banners, imágenes y etiquetas */
