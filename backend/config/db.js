@@ -32,6 +32,15 @@ const pool = mysql.createPool({
 
 });
 
+// Show resolved DB params (hide password) to help debug connection issues
+console.log('MySQL params:', {
+  host: process.env.DB_HOST || process.env.MYSQLHOST || process.env.MYSQL_HOST || 'localhost',
+  port: process.env.DB_PORT || process.env.MYSQLPORT || process.env.MYSQL_PORT || 3306,
+  user: process.env.DB_USER || process.env.MYSQLUSER || process.env.MYSQL_USER || 'root',
+  database: process.env.DB_NAME || process.env.MYSQLDATABASE || process.env.MYSQL_DATABASE || 'voldigital',
+  passwordSet: !!(process.env.DB_PASSWORD || process.env.MYSQLPASSWORD || process.env.MYSQL_PASSWORD || process.env.MYSQL_ROOT_PASSWORD)
+});
+
 // Debug: show which client we're using and whether DATABASE_URL exists (no secrets printed)
 console.log('DB config:', 'DB_CLIENT=', process.env.DB_CLIENT || '<unset>', 'DATABASE_URL set=', !!process.env.DATABASE_URL);
 pool.getConnection()
