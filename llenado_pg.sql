@@ -16,17 +16,16 @@ INSERT INTO users (email, password, role) VALUES
 
 -- Insert volunteers linking by user email
 INSERT INTO volunteers (user_id, name, last_name, bio, phone, city, birth_date)
-SELECT u.id, 'Natalia','Gómez','Apasionada por la conservación ambiental.','+573001111111','Bucaramanga','1992-04-12' FROM users u WHERE u.email='v1@example.com' UNION ALL
-SELECT u.id,'Carlos','Ramírez','Docente voluntario en educación popular.','+573002222222','Bucaramanga','1988-09-03' FROM users u WHERE u.email='v2@example.com' UNION ALL
-SELECT u.id,'María','López','Diseñadora gráfica que colabora con ONGs.','+573003333333','Floridablanca','1995-07-21' FROM users u WHERE u.email='v3@example.com' UNION ALL
-SELECT u.id,'Juan','Pérez','Programador interesado en tecnología social.','+573004444444','Bucaramanga','1990-01-10' FROM users u WHERE u.email='v4@example.com' UNION ALL
-SELECT u.id,'Ana','Martínez','Líder comunitaria en proyectos de nutrición.','+573005555555','Bucaramanga','1985-12-30' FROM users u WHERE u.email='v5@example.com' UNION ALL
-SELECT u.id,'Luis','Fernández','Estudiante universitario, trabaja en programas comunitarios.','+573006666666','Bucaramanga','2000-06-15' FROM users u WHERE u.email='v6@example.com' UNION ALL
-SELECT u.id,'Sofía','Ruiz','Gestora cultural y voluntaria en arte.','+573007777777','Floridablanca','1993-11-02' FROM users u WHERE u.email='v7@example.com' UNION ALL
-SELECT u.id,'Andrés','García','Deportista y promotor de bienestar.','+573008888888','Bucaramanga','1991-03-19' FROM users u WHERE u.email='v8@example.com' UNION ALL
-SELECT u.id,'Laura','Rojas','Enfermera voluntaria en campañas de salud.','+573009999999','Bucaramanga','1987-08-25' FROM users u WHERE u.email='v9@example.com' UNION ALL
-SELECT u.id,'Diego','Suárez','Emprendedor social en formación.','+573010000000','Bucaramanga','1994-02-14' FROM users u WHERE u.email='v10@example.com';
-
+SELECT u.id, 'Natalia','Gómez','Apasionada por la conservación ambiental.','+573001111111','Bucaramanga', DATE '1992-04-12' FROM users u WHERE u.email='v1@example.com' UNION ALL
+SELECT u.id,'Carlos','Ramírez','Docente voluntario en educación popular.','+573002222222','Bucaramanga', DATE '1988-09-03' FROM users u WHERE u.email='v2@example.com' UNION ALL
+SELECT u.id,'María','López','Diseñadora gráfica que colabora con ONGs.','+573003333333','Floridablanca', DATE '1995-07-21' FROM users u WHERE u.email='v3@example.com' UNION ALL
+SELECT u.id,'Juan','Pérez','Programador interesado en tecnología social.','+573004444444','Bucaramanga', DATE '1990-01-10' FROM users u WHERE u.email='v4@example.com' UNION ALL
+SELECT u.id,'Ana','Martínez','Líder comunitaria en proyectos de nutrición.','+573005555555','Bucaramanga', DATE '1985-12-30' FROM users u WHERE u.email='v5@example.com' UNION ALL
+SELECT u.id,'Luis','Fernández','Estudiante universitario, trabaja en programas comunitarios.','+573006666666','Bucaramanga', DATE '2000-06-15' FROM users u WHERE u.email='v6@example.com' UNION ALL
+SELECT u.id,'Sofía','Ruiz','Gestora cultural y voluntaria en arte.','+573007777777','Floridablanca', DATE '1993-11-02' FROM users u WHERE u.email='v7@example.com' UNION ALL
+SELECT u.id,'Andrés','García','Deportista y promotor de bienestar.','+573008888888','Bucaramanga', DATE '1991-03-19' FROM users u WHERE u.email='v8@example.com' UNION ALL
+SELECT u.id,'Laura','Rojas','Enfermera voluntaria en campañas de salud.','+573009999999','Bucaramanga', DATE '1987-08-25' FROM users u WHERE u.email='v9@example.com' UNION ALL
+SELECT u.id,'Diego','Suárez','Emprendedor social en formación.','+573010000000','Bucaramanga', DATE '1994-02-14' FROM users u WHERE u.email='v10@example.com';
 -- 2) Organizations (5)
 INSERT INTO users (email, password, role) VALUES
 ('org1@example.com','$2a$12$...','organization'),
@@ -126,16 +125,16 @@ SELECT o.id,'Ciclo de Conciertos','Conciertos comunitarios con artistas locales.
 
 -- 3.5) Avatares, banners, imágenes y etiquetas
 -- Volunteers avatars and banners
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=1', banner_url='https://picsum.photos/seed/v1/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v1@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=2', banner_url='https://picsum.photos/seed/v2/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v2@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=3', banner_url='https://picsum.photos/seed/v3/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v3@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=4', banner_url='https://picsum.photos/seed/v4/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v4@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=5', banner_url='https://picsum.photos/seed/v5/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v5@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=6', banner_url='https://picsum.photos/seed/v6/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v6@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=7', banner_url='https://picsum.photos/seed/v7/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v7@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=8', banner_url='https://picsum.photos/seed/v8/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v8@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=9', banner_url='https://picsum.photos/seed/v9/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v9@example.com' LIMIT 1);
-UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=10', banner_url='https://picsum.photos/seed/v10/1200/300' WHERE id = (SELECT id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v10@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=1', banner_url='https://picsum.photos/seed/v1/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v1@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=2', banner_url='https://picsum.photos/seed/v2/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v2@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=3', banner_url='https://picsum.photos/seed/v3/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v3@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=4', banner_url='https://picsum.photos/seed/v4/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v4@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=5', banner_url='https://picsum.photos/seed/v5/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v5@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=6', banner_url='https://picsum.photos/seed/v6/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v6@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=7', banner_url='https://picsum.photos/seed/v7/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v7@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=8', banner_url='https://picsum.photos/seed/v8/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v8@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=9', banner_url='https://picsum.photos/seed/v9/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v9@example.com' LIMIT 1);
+UPDATE volunteers SET avatar_url='https://i.pravatar.cc/150?img=10', banner_url='https://picsum.photos/seed/v10/1200/300' WHERE id = (SELECT v.id FROM volunteers v JOIN users u ON v.user_id=u.id WHERE u.email='v10@example.com' LIMIT 1);
 
 -- Organizations avatars/banners
 UPDATE organizations SET avatar_url='https://picsum.photos/seed/org1/200/200', banner_url='https://picsum.photos/seed/org1b/1400/350' WHERE name='Guardianes del Río';
