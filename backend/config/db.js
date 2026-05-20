@@ -40,7 +40,8 @@ pool.getConnection()
     conn.release();
   })
   .catch(err => {
-    console.error('Error al conectar MySQL:', err.message);
+    // Log full error stack to help debug connection issues in hosted logs
+    console.error('Error al conectar MySQL:', err && err.stack ? err.stack : err);
   });
 
 module.exports = pool;
