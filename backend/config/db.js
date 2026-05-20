@@ -15,6 +15,8 @@ const pool = mysql.createPool({
 
 });
 
+// Debug: show which client we're using and whether DATABASE_URL exists (no secrets printed)
+console.log('DB config:', 'DB_CLIENT=', DB_CLIENT || '<unset>', 'DATABASE_URL set=', !!process.env.DATABASE_URL);
 pool.getConnection()
   .then(conn => {
     console.log('MySQL conectado correctamente');
