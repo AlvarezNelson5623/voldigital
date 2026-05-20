@@ -1,6 +1,23 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
+// If Railway provides a single MYSQL URL (or public URL), parse it into DB_* fallbacks.
+const mysqlUrl = process.env.MYSQL_URL || process.env.MYSQL_PUBLIC_URL || process.env.MYSQLPUBLICURL;
+if (mysqlUrl && !process.env.DB_HOST) {
+  try {
+    const parsed = new URL(mysqlUrl);
+    // set fallback env vars so the existing mysql pool code picks them up
+    process.env.DB_HOST = parsed.hostname;
+    if (parsed.port) process.env.DB_PORT = parsed.port;
+    if (parsed.username) process.env.DB_USER = parsed.username;
+    if (parsed.password) process.env.DB_PASSWORD = parsed.password;
+    if (parsed.pathname) process.env.DB_NAME = parsed.pathname.replace(/^\//, '');
+    console.log('Parsed MYSQL URL into DB_HOST/DB_USER/DB_NAME');
+  } catch (err) {
+    console.log('Could not parse MYSQL URL from env:', err.message);
+  }
+}
+
 const pool = mysql.createPool({
   // Accept either DB_* env vars (used locally) or Railway-provided MYSQL* vars
   host:     process.env.DB_HOST || process.env.MYSQLHOST || process.env.MYSQL_HOST || 'localhost',
