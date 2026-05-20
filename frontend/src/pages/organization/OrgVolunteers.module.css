@@ -1,0 +1,56 @@
+.topBar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.filters { display: flex; gap: 6px; }
+.filterBtn {
+  padding: 7px 14px; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+  background: var(--bg-2); border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.filterBtn:hover { background: var(--card); color: var(--text); }
+.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.searchWrap { }
+
+.table { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.tableHead {
+  display: grid; grid-template-columns: 2fr 1fr 2fr 1fr 1.2fr 1fr;
+  padding: 12px 16px; background: var(--bg-2);
+  font-size: 11px; font-weight: 700; color: var(--text-2);
+  text-transform: uppercase; letter-spacing: .5px;
+  border-bottom: 1px solid var(--border);
+}
+.tableRow {
+  display: grid; grid-template-columns: 2fr 1fr 2fr 1fr 1.2fr 1fr;
+  padding: 12px 16px; align-items: center;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+  cursor: pointer;
+}
+.tableRow:hover { background: var(--bg-2); }
+.tableRow:last-child { border-bottom: none; }
+.tableRow:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.volCell { display: flex; align-items: center; gap: 10px; }
+.avatar  { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.volName { font-size: 14px; font-weight: 600; }
+
+.cell { font-size: 13px; color: var(--text-2); }
+
+.multiProj {
+  background: rgba(108,99,255,.12); color: var(--primary);
+  font-size: 12px; font-weight: 600;
+  padding: 3px 8px; border-radius: var(--radius-full);
+}
+
+.empty {
+  text-align: center; padding: 80px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  color: var(--text-2);
+}
+
+@media (max-width: 768px) {
+  .tableHead { display: none; }
+  .tableRow  { grid-template-columns: 1fr; gap: 4px; padding: 14px 16px; }
+}

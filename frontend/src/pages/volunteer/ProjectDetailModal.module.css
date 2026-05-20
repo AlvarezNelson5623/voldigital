@@ -1,0 +1,36 @@
+.overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.6);
+  z-index: 1000; display: flex; align-items: center; justify-content: center;
+  padding: 20px; backdrop-filter: blur(4px);
+}
+.modal {
+  background: var(--card); border-radius: var(--radius-lg);
+  width: 100%; max-width: 620px; max-height: 90vh;
+  overflow-y: auto; position: relative;
+  box-shadow: var(--shadow-lg);
+}
+.closeBtn {
+  position: absolute; top: 14px; right: 14px; z-index: 10;
+  background: rgba(0,0,0,.4); color: #fff;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.closeBtn:hover { background: rgba(0,0,0,.7); }
+.image { width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.content { padding: 24px; }
+.topRow { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.topRow .badge { flex-shrink: 0; }
+.orgLink { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; padding: 4px 6px; border-radius: 8px; transition: background .15s ease; }
+.orgLink:hover { background: rgba(255,255,255,0.02); }
+.orgAvatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+.orgName { font-size: 14px; color: var(--text); font-weight: 600; }
+.title { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+.desc  { color: var(--text-2); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+.meta  { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
+.metaItem { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-2); }
+.metaItem svg { color: var(--primary); }
+.orgSection { background: var(--bg-2); border-radius: var(--radius); padding: 14px; margin-bottom: 20px; }
+.orgSection h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--primary); }
+.orgSection p  { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+.actions { display: flex; gap: 10px; }

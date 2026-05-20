@@ -1,0 +1,64 @@
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Hero público: profesional, paleta conservada */
+.hero {
+  /* Light-mode hero: clearer contrast against light backgrounds */
+  background: linear-gradient(180deg, rgba(108,99,255,.14), rgba(74,68,204,.08));
+  color: var(--text); padding: 72px 0 56px; position: relative; overflow: hidden;
+}
+.heroInner { display: flex; align-items: center; justify-content: space-between; gap: 40px; width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+.heroContent { width: 58%; }
+.heroPill { display: inline-block; background: rgba(108,99,255,.10); color: var(--primary-dark); border-radius: 999px; padding: 6px 14px; font-weight:700; margin-bottom: 12px; }
+.heroTitle { font-size: clamp(30px, 5vw, 50px); font-weight:800; line-height:1.06; margin-bottom: 12px; }
+.heroHighlight { background: linear-gradient(90deg, var(--secondary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.heroSub { font-size: 16px; color: var(--text-2); max-width:560px; margin-bottom:18px; }
+.heroCtas { display:flex; gap:12px; }
+
+.heroStats { width: 700px; max-width: 48%; background: var(--card); border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:12px; align-items:center; justify-content:center; border:1px solid var(--border); box-shadow: var(--shadow-lg); }
+.heroStats a { width: 100%; }
+.heroStats .label { margin-left: 12px; }
+.stat { display:flex; gap:10px; align-items:center; }
+.stat strong { display:block; font-weight:700; }
+
+/* Roles */
+.rolesSection { display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin: 36px 0; }
+.roleCard { padding:22px; border-radius:12px; background: var(--card); border:1px solid var(--border); display:flex; flex-direction:column; gap:10px; }
+
+/* Feed */
+.main { padding: 28px 0; }
+.feedHeader h2 { font-size:20px; font-weight:700; }
+.searchWrap { position:relative; margin-bottom:18px; }
+.searchIcon { position:absolute; left:12px; top:50%; transform:translateY(-50%); }
+.searchInput { padding-left:40px !important; }
+.projects-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:18px; }
+
+.lockedCard { position:relative; }
+.lockOverlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,.5); opacity:0; transition:opacity .16s; }
+.lockedCard:hover .lockOverlay { opacity:1; }
+
+.empty { text-align:center; padding: 48px 12px; }
+
+/* Dark-theme adjustments */
+[data-theme="dark"] .hero {
+  background: linear-gradient(180deg, rgba(16,13,56,.72), rgba(10,8,30,.82));
+  color: #fff;
+}
+
+[data-theme="dark"] .heroPill {
+  background: rgba(255,255,255,.06);
+  color: #fff;
+}
+
+[data-theme="dark"] .heroStats {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 18px 48px rgba(0,0,0,.45);
+}
+
+.footer { padding:18px 0; text-align:center; color:var(--text-2); background:var(--card); border-top:1px solid var(--border); }
+
+@media (max-width: 900px) {
+  .heroInner { flex-direction:column-reverse; }
+  .heroContent { width:100%; }
+  .rolesSection { grid-template-columns: 1fr; }
+}

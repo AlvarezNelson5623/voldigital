@@ -1,0 +1,63 @@
+.page { min-height: 100vh; display: flex; flex-direction: column; background: var(--bg); }
+
+.center {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  width: 100%; max-width: 440px;
+  padding: 40px;
+}
+
+.header { text-align: center; margin-bottom: 28px; }
+.emoji  { font-size: 40px; display: block; margin-bottom: 12px; }
+.logo   { display: block; margin: 0 auto 12px; width: 96px; height: auto; }
+.title  { font-size: 24px; font-weight: 800; color: var(--text); }
+.sub    { color: var(--text-2); margin-top: 6px; font-size: 14px; }
+
+.form { display: flex; flex-direction: column; gap: 18px; }
+
+.inputWrap { position: relative; }
+.inputIcon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-3); pointer-events: none; }
+.inputPad  { padding-left: 40px !important; }
+.inputPadRight { padding-right: 40px !important; }
+.eyeBtn {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  background: transparent; color: var(--text-3); padding: 4px;
+}
+.eyeBtn:hover { color: var(--text); }
+
+.footer { text-align: center; margin-top: 20px; font-size: 14px; color: var(--text-2); }
+.link   { color: var(--primary); font-weight: 600; }
+.link:hover { text-decoration: underline; }
+
+/* Role selector */
+.roleGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.roleBtn {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; padding: 20px 16px; border-radius: var(--radius);
+  border: 2px solid var(--border); background: var(--bg);
+  color: var(--text); font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: var(--transition);
+}
+.roleBtn .roleIcon { font-size: 32px; }
+.roleBtn:hover { border-color: var(--primary); background: rgba(108,99,255,.05); }
+.roleBtn.selected { border-color: var(--primary); background: rgba(108,99,255,.1); color: var(--primary); }
+
+/* Tags picker */
+.tagsPicker { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Step indicator */
+.steps { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; justify-content: center; }
+.step  {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  background: var(--border); color: var(--text-2);
+  transition: var(--transition);
+}
+.step.done   { background: var(--success); color: #fff; }
+.step.active { background: var(--primary); color: #fff; }
+.stepLine    { flex: 1; height: 2px; background: var(--border); border-radius: 1px; max-width: 40px; }
+.stepLine.done { background: var(--success); }

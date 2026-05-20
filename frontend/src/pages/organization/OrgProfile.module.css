@@ -1,0 +1,57 @@
+.wrapper { max-width: 960px; margin: 0 auto; }
+.bannerWrap { position: relative; height: 200px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden; }
+.banner { width: 100%; height: 100%; background-size: cover; background-position: center; }
+.bannerEdit {
+  position: absolute; bottom: 12px; right: 12px;
+  background: rgba(0,0,0,.55); color: #fff;
+  padding: 6px 14px; border-radius: var(--radius-sm);
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+}
+.profileHeader {
+  background: var(--card); border: 1px solid var(--border); border-top: none;
+  padding: 0 28px 20px; display: flex; align-items: flex-end; gap: 20px;
+}
+.avatarWrap { position: relative; flex-shrink: 0; margin-top: -50px; }
+.avatar {
+  width: 100px; height: 100px; border-radius: var(--radius);
+  object-fit: cover; border: 4px solid var(--card); box-shadow: var(--shadow);
+}
+.avatarEdit {
+  position: absolute; bottom: -4px; right: -4px;
+  background: var(--primary); color: #fff;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 12px;
+}
+.headerInfo { flex: 1; padding-top: 14px; }
+.name { font-size: 22px; font-weight: 800; }
+.planBadge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-full); }
+.role  { font-size: 14px; color: var(--text-2); display: block; margin-top: 4px; }
+.quote { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+.editBtns { display: flex; gap: 8px; padding-bottom: 4px; }
+
+.body {
+  background: var(--card); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 28px;
+}
+.infoGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.sectionTitle { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--primary); }
+.desc  { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px; }
+.metaList { display: flex; flex-direction: column; gap: 8px; }
+.metaItem { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); }
+.metaItem svg { color: var(--secondary); }
+
+.planBox {
+  background: color-mix(in srgb, var(--pc, var(--primary)) 8%, var(--bg-2));
+  border: 1px solid color-mix(in srgb, var(--pc, var(--primary)) 30%, transparent);
+  border-radius: var(--radius); padding: 20px;
+}
+.planName  { font-size: 14px; font-weight: 700; color: var(--pc, var(--primary)); }
+.planPrice { font-size: 26px; font-weight: 800; }
+
+.editForm { display: flex; flex-direction: column; gap: 18px; }
+
+@media (max-width: 640px) {
+  .infoGrid { grid-template-columns: 1fr; }
+}

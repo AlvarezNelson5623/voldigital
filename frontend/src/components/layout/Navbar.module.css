@@ -1,0 +1,49 @@
+.nav {
+  position: sticky; top: 0; z-index: 900;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 18px; color: var(--text);
+  user-select: none;
+}
+.logoImg { width: 34px; height: 34px; object-fit: contain; }
+.logoText { font-size: 18px; font-weight: 600; }
+.logoText strong { color: var(--primary); font-weight: 800; }
+
+.actions {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.themeBtn {
+  background: transparent; color: var(--text-2);
+  padding: 8px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; gap: 6px;
+  font-size: 14px; transition: var(--transition);
+}
+.themeBtn:hover { background: var(--bg-2); color: var(--text); }
+
+.hamburger {
+  display: none; background: transparent; color: var(--text);
+  padding: 6px;
+}
+
+.mobileMenu {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px; border-top: 1px solid var(--border);
+  background: var(--card);
+}
+
+@media (max-width: 640px) {
+  .actions   { display: none; }
+  .hamburger { display: flex; }
+}

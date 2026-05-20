@@ -1,0 +1,65 @@
+.currentPlan {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 20px;
+  margin-bottom: 28px; font-size: 15px;
+}
+
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.planCard {
+  background: var(--card); border: 2px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px 22px;
+  position: relative; display: flex; flex-direction: column; gap: 20px;
+  transition: var(--transition);
+  height: 100%;
+  /* ensure buttons stay at bottom and content stretches */
+  justify-content: space-between;
+}
+.planCard:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.current { border-color: var(--pc); }
+.popular {
+  border-color: var(--pc);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pc) 20%, transparent);
+}
+
+.popularBadge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--pc); color: #fff;
+  font-size: 12px; font-weight: 700; padding: 4px 14px;
+  border-radius: var(--radius-full); white-space: nowrap;
+}
+.currentBadge {
+  position: absolute; top: 14px; right: 14px;
+  background: color-mix(in srgb, var(--pc) 15%, transparent); color: var(--pc);
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: var(--radius-full); border: 1px solid color-mix(in srgb, var(--pc) 30%, transparent);
+}
+
+.planTop { }
+.planName {
+  font-size: 18px; font-weight: 800; color: var(--pc);
+  margin-bottom: 10px;
+}
+.planPrice { display: flex; align-items: baseline; gap: 4px; }
+.freeLabel      { font-size: 28px; font-weight: 800; }
+.priceAmount    { font-size: 28px; font-weight: 800; }
+.pricePeriod    { font-size: 14px; color: var(--text-2); }
+
+.featureList {
+  list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.featureList li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-2); }
+.checkIcon { color: var(--success); flex-shrink: 0; margin-top: 2px; }
+
+.planBtn { width: 100%; justify-content: center; }
+
+.disclaimer { margin-top: 24px; font-size: 12px; color: var(--text-3); text-align: center; }
+
+@media (max-width: 900px) { .planGrid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .planGrid { grid-template-columns: 1fr; } }

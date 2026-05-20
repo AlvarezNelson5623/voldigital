@@ -1,0 +1,14 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all .2s ease;
+  user-select: none;
+}
+.md  { padding: 4px 12px; font-size: 12px; }
+.sm  { padding: 2px 8px;  font-size: 11px; }
+.lg  { padding: 6px 16px; font-size: 14px; }
+.clickable { cursor: pointer; }
+.clickable:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.selected { font-weight: 700; }
