@@ -94,6 +94,7 @@ exports.registerOrganization = async (req, res) => {
 // POST /api/auth/login
 exports.login = async (req, res) => {
   const { email, password } = req.body;
+  console.log(`Login attempt for email=${email} ip=${req.ip} host=${req.get('host')}`);
   if (!email || !password)
     return res.status(400).json({ error: 'Email y contraseña requeridos' });
 
