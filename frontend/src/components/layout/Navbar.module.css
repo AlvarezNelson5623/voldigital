@@ -43,6 +43,20 @@
   background: var(--card);
 }
 
+.mobileNav {
+  display: flex; flex-direction: column; gap: 6px;
+  padding-top: 6px;
+}
+
+.mobileLink {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  color: var(--text-2); text-decoration: none;
+  transition: var(--transition);
+}
+.mobileLink:hover { background: var(--bg-2); color: var(--text); }
+.mobileLink span { font-size: 14px; }
+
 @media (max-width: 640px) {
   .actions   { display: none; }
   .hamburger { display: flex; }
