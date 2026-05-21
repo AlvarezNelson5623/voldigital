@@ -99,10 +99,12 @@ exports.login = async (req, res) => {
     return res.status(400).json({ error: 'Email y contraseña requeridos' });
 
   const [users] = await db.query('SELECT * FROM users WHERE email=?', [email]);
+  console.log(`Login: usersFound=${users.length} for email=${email}`);
   if (!users.length) return res.status(401).json({ error: 'Credenciales inválidas' });
 
   const user = users[0];
   const match = await bcrypt.compare(password, user.password);
+  console.log(`Login: password match=${!!match} for userId=${user.id}`);
   if (!match) return res.status(401).json({ error: 'Credenciales inválidas' });
 
   // Obtener profileId según rol
