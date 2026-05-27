@@ -24,6 +24,32 @@
 .rolesSection { display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin: 36px 0; }
 .roleCard { padding:22px; border-radius:12px; background: var(--card); border:1px solid var(--border); display:flex; flex-direction:column; gap:10px; }
 
+/* Imagen informativa para usuarios no logeados */
+.homeGraphic { margin: 18px 0 28px; display:flex; justify-content:center; }
+.canvasImage {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  display: block;
+  object-fit: contain;
+}
+
+.graphicLayout { display:flex; gap:28px; align-items:center; justify-content:center; }
+.graphicLeft { flex: 0 0 55%; display:flex; justify-content:center; }
+.graphicRight { flex: 1; padding: 8px 18px; }
+.graphicTitle { font-size: clamp(24px, 3.6vw, 36px); font-weight:800; margin-bottom:12px; color:var(--text); }
+.graphicText { color:var(--text-2); font-size:16px; margin-bottom:18px; line-height:1.5; }
+
+@media (max-width: 900px) {
+  .graphicLayout { flex-direction: column; }
+  .graphicLeft { width: 100%; }
+  .graphicRight { width: 100%; text-align: center; }
+  .graphicTitle { font-size: 22px; }
+}
+
 /* Feed */
 .main { padding: 28px 0; }
 .feedHeader h2 { font-size:20px; font-weight:700; }

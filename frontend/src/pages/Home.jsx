@@ -6,12 +6,15 @@ import Navbar from '../components/layout/Navbar'
 import ProjectCard from '../components/common/ProjectCard'
 import AdvertisementCarousel from '../components/common/AdvertisementCarousel'
 import styles from './HomePublic.module.css'
+import { useAuth } from '../context/AuthContext'
+import CanvasGraphic from '../assets/Grafica Modelo Canvas Voldigital.png'
 
 export default function Home() {
   const [projects, setProjects] = useState([])
   const [ads, setAds]           = useState([])
   const [search, setSearch]     = useState('')
   const [loading, setLoading]   = useState(true)
+  const { user } = useAuth()
 
   useEffect(() => {
     Promise.all([
@@ -99,6 +102,28 @@ export default function Home() {
             <Link to="/registro?rol=organizacion" className="btn btn-secondary">Ver planes</Link>
           </div>
         </section>
+        {/* Imagen para usuarios no logeados */}
+        {!user && (
+          <section className={styles.homeGraphic}>
+            <div className="container">
+              <div className={styles.graphicLayout}>
+                <div className={styles.graphicLeft}>
+                  <img src={CanvasGraphic} alt="Modelo Canvas VolDigital" className={styles.canvasImage} />
+                </div>
+                <div className={styles.graphicRight}>
+                  <h2 className={styles.graphicTitle}>Modelo Canvas</h2>
+                  <p className={styles.graphicText}>
+                    Conoce la estructura de nuestro modelo de negocios: propuesta de valor, canales, clientes y métricas clave.
+                    Haz clic en registrarte para participar o ver más detalles.
+                  </p>
+                  <div>
+                    <Link to="/registro" className="btn btn-primary btn-lg">Regístrate gratis</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Projects feed */}
         <section className={styles.feedSection}>
